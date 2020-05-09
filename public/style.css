@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: darkgrey;
+}
+
+header{
+    background-color: crimson;
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box;     /*config. muito importante para deixar tudo alinha ao centro*/
+}
+
+.links{
+    font-size: 22px;
+}
+
+.links a+a{
+    margin-left: 32px;          /*indicando que a config. afetará a partir do segundo item*/
+}
+
+.links a{
+    text-decoration: none;
+    color: #777;
+    position: relative;
+}
+
+.links a.active{
+    font-weight: bold;
+    color: white;
+}
+
+.links a:hover{
+    color: white;
+}
+
+.links a::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+.links a:hover::after{
+    width: 100%;
+    transition: width 700ms cubic-bezier(1, 0.23, 0.61, 0.7);
+}
