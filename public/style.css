@@ -137,6 +137,53 @@ header{
     font-size: 16px;
 }
 
+/* FORM */
+
+form input{
+    width: 100%;
+    outline: none;      /*linha de seleção do campo*/
+    color: #555;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    margin: 5px auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type="date"]{
+    margin-left: 50px;
+    width: 42%;
+    color: #555;
+    font-size: 16px;
+}
+
+select{
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    text-align-last: center;    /*centralizar o texto dentro do select*/
+}
+
+input[type="radio"]{    /*selecionando apenas os tipo radio*/
+    width: initial;
+    margin-left: 15px;
+}
+
+input::placeholder{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+button[type="submit"]{
+    padding: 8px 32px;
+    background-color: var(--principal-color);
+    border-radius: 4px;
+    margin-top: 15px;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+}
+
 /*ANIMATIONS*/
 
 @keyframes entranceCard{

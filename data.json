@@ -1,0 +1,14 @@
+{
+  "teachers": [
+    {
+      "id": 1,
+      "avatar_url": "https://www.youtube.com/watch?v=SLQ0oYhYK-Y&list=TLPQMjEwNTIwMjDA4CBC3bsmgw&index=2",
+      "name": "Yuri Oliveira da Silva",
+      "birth": 1588636800000,
+      "schooling": "Ensino Superior Completo",
+      "type_class": "À distância",
+      "acting": "Informática, Web Design, Administração, Programação",
+      "created_at": 1590086680956
+    }
+  ]
+}

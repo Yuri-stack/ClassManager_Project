@@ -4,6 +4,7 @@ const routes = require('./routes')
 
 const server = express()
 
+server.use(express.urlencoded({ extended: true }))  //configuração que permite o rq.body funcionar
 server.use(express.static('public'))
 server.use(routes)
 
