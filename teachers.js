@@ -1,12 +1,14 @@
 //Variavéis
 
-const fs = require('fs')                    //fs é um módulo que permite para interagir com o sistema de arquivos 
+const fs = require('fs')                        //fs é um módulo que permite para interagir com o sistema de arquivos 
 const data = require('./data.json')
+const { graduation, age } = require('./utils')       //desestruturando o objeto e só pegando o que é necessário
+const Intl = require('intl')                    //importando o INTL para arrumar a data
 
-//Função para CREATE
-exports.post = function(req,res){           //Post é o nome da função, mas poderia ser qualquer outro
-                                            //usando o metodo Post temos que pegar as info através do Req.Body
-    const keys = Object.keys(req.body)      //a var KEY está pegando o nome dos campos(key) do formulário através do Constructor Object e dá função Keys
+//Função CREATE
+exports.post = function(req,res){               //Post é o nome da função, mas poderia ser qualquer outro
+                                                //usando o metodo Post temos que pegar as info através do Req.Body
+    const keys = Object.keys(req.body)          //a var KEY está pegando o nome dos campos(key) do formulário através do Constructor Object e dá função Keys
 
     for(key of keys){                           //verificando se cada key está preenchidas
         if(req.body[key] == ""){                //é o mesmo que fazer req.body.(cada item do vetor) == ""
@@ -44,4 +46,33 @@ exports.post = function(req,res){           //Post é o nome da função, mas po
             return res.redirect("/teachers")
         }
     )
+}
+
+//Função SHOWS
+exports.show = function(req, res){
+
+    const { id } = req.params
+
+    const foundTeacher = data.teachers.find(function(teacher){  
+        return teacher.id == id
+
+        /*
+            para cada item(professor/teacher) do Array Data, 
+            nós usamos o método Find que pega cada item(professor/teacher)
+            e verifica se o id dele é igual ao id enviado pelo URL
+        */
+
+    })
+
+    if(!foundTeacher) return res.send('Teacher not found')
+    
+    const teacher = {
+        ...foundTeacher,
+        schooling: graduation(foundTeacher.schooling),
+        age: age(foundTeacher.birth),
+        acting: foundTeacher.acting.split(','),
+        created_at: new Intl.DateTimeFormat('pt-BR').format(foundTeacher.created_at)
+    }
+
+    return res.render('teachers/show', { teacher : teacher })
 }

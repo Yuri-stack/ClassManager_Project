@@ -3,7 +3,9 @@
 {% block content %}
 
     <form class="card" method="post" action="/teachers">
-        <section class="avatar"></section>
+        <section class="avatar" 
+            style="background: url('https://source.unsplash.com/collection/609053/500x500') no-repeat center center / cover; ">
+        </section>
         <section class="details">
 
             <h3>Novo Professor</h3>
@@ -32,13 +34,22 @@
             <div class="item">
                 <div>Grau de Escolaridade</div>
                 <div>
-                    <select name="schooling" required>
+                    {# <select name="schooling" required>
                         <option value="">Escolha o Grau de Escolaridade</option>
                         <option value="Ensino Médio Completo">Ensino Médio Completo</option>
                         <option value="Ensino Superior Completo">Ensino Superior Completo</option>
                         <option value="Mestrado">Mestrado</option>
                         <option value="Doutorado">Doutorado</option>
+                    </select> #}
+
+                    <select name="schooling" required>
+                        <option value="">Escolha o Grau de Escolaridade</option>
+                        <option value="medio">Ensino Médio Completo</option>
+                        <option value="superior">Ensino Superior Completo</option>
+                        <option value="mestre">Mestrado</option>
+                        <option value="doutor">Doutorado</option>
                     </select>
+
                 </div>
             </div>
 
