@@ -160,7 +160,7 @@ select{
     text-align-last: center;    /*centralizar o texto dentro do select*/
 }
 
-input[type="radio"]{    /*selecionando apenas os tipo radio*/
+input[type="radio"]{            /*selecionando apenas os tipo radio*/
     width: initial;
     margin-left: 15px;
 }
@@ -170,7 +170,7 @@ input::placeholder{
     font-weight: normal;
 }
 
-button[type="submit"]{
+.button, button[type="submit"]{
     padding: 8px 32px;
     background-color: var(--principal-color);
     border-radius: 4px;
@@ -178,6 +178,13 @@ button[type="submit"]{
     width: 100%;
     color: #fff;
     font-size: 16px;
+}
+
+.button{
+    display: block;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin-top: 5px;
 }
 
 /*ANIMATIONS*/

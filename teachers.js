@@ -2,8 +2,8 @@
 
 const fs = require('fs')                        //fs é um módulo que permite para interagir com o sistema de arquivos 
 const data = require('./data.json')
-const { graduation, age } = require('./utils')       //desestruturando o objeto e só pegando o que é necessário
-const Intl = require('intl')                    //importando o INTL para arrumar a data
+const { graduation, age, date } = require('./utils')    //desestruturando o objeto e só pegando o que é necessário
+const Intl = require('intl')                            //importando o INTL para arrumar a data
 
 //Função CREATE
 exports.post = function(req,res){               //Post é o nome da função, mas poderia ser qualquer outro
@@ -75,4 +75,24 @@ exports.show = function(req, res){
     }
 
     return res.render('teachers/show', { teacher : teacher })
+}
+
+//Função EDIT
+exports.edit = function(req, res){
+
+    const { id } = req.params
+
+    const foundTeacher = data.teachers.find(function(teacher){
+        return teacher.id == id
+    })
+
+    if(!foundTeacher) return res.send('Teacher not found')
+
+    const teacher = {
+        ...foundTeacher,
+        birth: date(foundTeacher.birth)
+    }
+
+    return res.render('teachers/edit', { teacher })
+
 }
