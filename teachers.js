@@ -5,7 +5,7 @@ const data = require('./data.json')
 const { graduation, age, date } = require('./utils')    //desestruturando o objeto e só pegando o que é necessário
 const Intl = require('intl')                            //importando o INTL para arrumar a data
 
-//Função CREATE
+//Função para CREATE
 exports.post = function(req,res){               //Post é o nome da função, mas poderia ser qualquer outro
                                                 //usando o metodo Post temos que pegar as info através do Req.Body
     const keys = Object.keys(req.body)          //a var KEY está pegando o nome dos campos(key) do formulário através do Constructor Object e dá função Keys
@@ -48,7 +48,7 @@ exports.post = function(req,res){               //Post é o nome da função, ma
     )
 }
 
-//Função SHOWS
+//Função para MOSTRAR
 exports.show = function(req, res){
 
     const { id } = req.params
@@ -77,7 +77,7 @@ exports.show = function(req, res){
     return res.render('teachers/show', { teacher : teacher })
 }
 
-//Função EDIT
+//Função para CARREGAR INFORMAÇÕES PARA EDITAR
 exports.edit = function(req, res){
 
     const { id } = req.params
@@ -94,5 +94,71 @@ exports.edit = function(req, res){
     }
 
     return res.render('teachers/edit', { teacher })
+
+}
+
+//Função para ATUALIZAR
+exports.update = function(req, res){
+
+    const { id } = req.body
+    let index = 0 
+
+    const foundTeacher = data.teachers.find(function(teacher, foundIndex){  //vai procurar o instrutor e a posição dele no array
+        if(id == teacher.id){
+            index = foundIndex
+            return true
+
+            /* 
+                verificamos se o professor procurado existe, e se existe pegamos seus dados e 
+                também atualizamos a variavel index com a posição desse instrutor no array 
+            */
+
+        }
+    })
+
+    if(!foundTeacher) return res.send('Teacher not found')
+
+    const teacher = {
+        ...foundTeacher,                    //usando o operador Spread Operator onde ele armazena os campos do foundInstructor que não serão alterados
+        ...req.body,                        //usando o operador Spread Operator onde ele armazena os dados vindo do req.body
+        id: Number(id),
+        birth: Date.parse(req.body.birth)   //chamanda a função e passando como paramentro o nasc. do instrutor pego pelo req.body
+    }
+
+    data.teachers[index] = teacher
+     /* pegamos as informações que foram alteradas e as que não foram relacionadas 
+    ao instrutor e atualizamos os dados desse instrutor na posição dele */
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
+        if(err) return res.send("Write file error!")
+
+        return res.redirect(`/teachers/${id}`)
+
+    })
+}
+
+//Função para APAGAR
+exports.delete = function(req, res){
+    
+    const { id } = req.body
+    
+    const filteredTeachers = data.teachers.filter(function(teacher){
+        return teacher.id != id
+    })
+
+    data.teachers = filteredTeachers
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
+        if(err) return res.send("Error in delete teacher")
+
+        return res.redirect(`/teachers`)
+    })
+
+    /* Para cada professor dentro do array, o método Filter faz um filtro verificando se 
+        o ID informado pelo req.body é diferente do ID que o método está verificando no Array.
+     
+        Quando o ID é diferente, ele é armazenado na constante filteredInstructors e quando 
+        for igual, ou seja, é o ID do professor que queremos apagar ele é retirado do Array.
+     */
 
 }

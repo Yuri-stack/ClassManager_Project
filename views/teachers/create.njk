@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form class="card" method="post" action="/teachers">
+    <form id="form-save" class="card" method="post" action="/teachers">
         <section class="avatar" 
             style="background: url('https://source.unsplash.com/collection/609053/500x500') no-repeat center center / cover; ">
         </section>
@@ -11,6 +11,8 @@
             <h3>Novo Professor</h3>
 
             {% include 'teachers/fields.njk' %}
+
+            <button type="submit" form="form-save">Salvar</button>
 
         </section>
     </form>

@@ -2,17 +2,35 @@
 
 {% block content %}
 
-    <form class="card" method="post" action="/teachers">
+    <div class="card">
+
         <section class="avatar" 
-            style="background: url('https://source.unsplash.com/collection/609053/500x500') no-repeat center center / cover; ">
+            style="background: url({{ teacher.avatar_url }}) no-repeat center center / cover; ">
         </section>
+
         <section class="details">
 
-            <h3>Editar Professor</h3>
+            <form id="form-save" method="post" action="/teachers?_method=PUT">
 
-            {% include 'teachers/fields.njk' %}
+                <h3>Editar Professor</h3>
+
+                <input type="hidden" name="id" value="{{ teacher.id }}">
+
+                {% include 'teachers/fields.njk' %}
+
+            </form>
+
+            <form id="form-delete" action="/teachers?_method=DELETE" method="post">
+
+                <input type="hidden" name="id" value="{{ teacher.id }}">
+                
+            </form>
+
+                <button class="btn-delete" type="submit" form="form-delete">Apagar</button>
+                <button class="btn-salve" type="submit" form="form-save">Salvar</button>
 
         </section>
-    </form>
+
+    </div>
 
 {% endblock content %}

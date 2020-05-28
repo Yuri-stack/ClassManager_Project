@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 :root{
-    --principal-color: crimson;
+    --principal-color: ForestGreen;
 }
 
 *{
@@ -34,7 +34,7 @@ header{
 
 .links a{
     text-decoration: none;
-    color: #777;
+    color: Silver;
     position: relative;
 }
 
@@ -170,21 +170,26 @@ input::placeholder{
     font-weight: normal;
 }
 
-.button, button[type="submit"]{
-    padding: 8px 32px;
-    background-color: var(--principal-color);
-    border-radius: 4px;
-    margin-top: 15px;
-    width: 100%;
-    color: #fff;
-    font-size: 16px;
-}
-
-.button{
+.button{                    /* classe relacionado ao botão do Editar */
     display: block;
     box-sizing: border-box;
     text-decoration: none;
     margin-top: 5px;
+}
+
+.button, button[type="submit"]{
+    display: inline-block;
+    padding: 8px 32px;
+    background-color: var(--principal-color);
+    border-radius: 4px;
+    margin-top: 15px;
+    width: 40%;
+    color: #fff;
+    font-size: 16px;
+}
+
+button[type="submit"].btn-delete {
+    background-color: rgb(220, 20, 20);
 }
 
 /*ANIMATIONS*/
