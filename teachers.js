@@ -5,6 +5,11 @@ const data = require('./data.json')
 const { graduation, age, date } = require('./utils')    //desestruturando o objeto e só pegando o que é necessário
 const Intl = require('intl')                            //importando o INTL para arrumar a data
 
+//Função para LISTAR
+exports.index = function(req, res){
+    return res.render('teachers/index', { teachers: data.teachers })
+}
+
 //Função para CREATE
 exports.post = function(req,res){               //Post é o nome da função, mas poderia ser qualquer outro
                                                 //usando o metodo Post temos que pegar as info através do Req.Body

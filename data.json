@@ -9,6 +9,26 @@
       "type_class": "À distância",
       "acting": "Web Design, Programação, Informática, Administração",
       "created_at": 1590086680956
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/62682253?s=460&u=c21b3e4cd06e2339e3f77c1875bc682267a827c3&v=4",
+      "name": "Professor 1",
+      "birth": 946684800000,
+      "schooling": "doutor",
+      "type_class": "Presencial",
+      "acting": "Informática",
+      "created_at": 1590804984480
+    },
+    {
+      "id": 3,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/62682253?s=460&u=c21b3e4cd06e2339e3f77c1875bc682267a827c3&v=4",
+      "name": "Professor 2",
+      "birth": 946684800000,
+      "schooling": "doutor",
+      "type_class": "Presencial",
+      "acting": "Administração",
+      "created_at": 1590805010311
     }
   ]
 }
