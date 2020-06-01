@@ -1,0 +1,82 @@
+            <div class="item">
+                <div>Avatar URL</div>
+                <div>
+                    <input type="url" name="avatar_url" placeholder="http://" value="{{ student.avatar_url }}" required>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Nome Completo</div>
+                <div>
+                    <input type="text" name="name" value="{{ student.name }}" required>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Email</div>
+                <div>
+                    <input type="email" name="email" value="{{ student.email }}" required>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Data de Nascimento</div>
+                <div>
+                    <input type="date" name="birth" value="{{ student.birth }}" required>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Ano Escolar</div>
+                <div>
+
+                    <select name="schooling" required>
+
+                        <option value="" {% if student.schooling == "" %} selected {% endif%}>
+                            Escolha o Grau de Escolaridade
+                        </option>
+
+                        <option value="5EF" {% if student.schooling == "5º Ano do Ensino Fundamental" %} selected {% endif%}>
+                            5º Ano
+                        </option>                       
+
+                        <option value="6EF" {% if student.schooling == "6º Ano do Ensino Fundamental" %} selected {% endif%}>
+                            6º Ano
+                        </option>
+
+                        <option value="7EF" {% if student.schooling == "7º Ano do Ensino Fundamental" %} selected {% endif%}>
+                            7º Ano
+                        </option>
+
+                        <option value="8EF" {% if student.schooling == "8º Ano do Ensino Fundamental" %} selected {% endif%}>
+                            8º Ano
+                        </option>
+
+                        <option value="9EF" {% if student.schooling == "9º Ano do Ensino Fundamental" %} selected {% endif%}>
+                            9º Ano
+                        </option>
+
+                        <option value="1EM" {% if student.schooling == "1º Ano do Ensino Médio" %} selected {% endif%}>
+                            1º Médio
+                        </option>
+
+                        <option value="2EM" {% if student.schooling == "2º Ano do Ensino Médio" %} selected {% endif%}>
+                            2º Médio
+                        </option>
+
+                        <option value="3EM" {% if student.schooling == "3º Ano do Ensino Médio" %} selected {% endif%}>
+                            3º Médio
+                        </option>
+
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Carga Horária Semanal</div>
+                <div>
+                    <input type="number" name="workload" value="{{ student.workload }}" required>
+                </div>
+            </div>
+            

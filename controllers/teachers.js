@@ -1,13 +1,18 @@
 //Variavéis
 
 const fs = require('fs')                        //fs é um módulo que permite para interagir com o sistema de arquivos 
-const data = require('./data.json')
-const { graduation, age, date } = require('./utils')    //desestruturando o objeto e só pegando o que é necessário
+const data = require('../data.json')
+const { graduation, age, date } = require('../utils')    //desestruturando o objeto e só pegando o que é necessário
 const Intl = require('intl')                            //importando o INTL para arrumar a data
 
 //Função para LISTAR
 exports.index = function(req, res){
     return res.render('teachers/index', { teachers: data.teachers })
+}
+
+//Função para redirecionar para a pagína Create
+exports.redirectCreate =  function(req, res){
+    return res.render('teachers/create')
 }
 
 //Função para CREATE
@@ -32,7 +37,7 @@ exports.post = function(req,res){               //Post é o nome da função, ma
         avatar_url,
         name,
         birth,
-        schooling,
+        schooling: graduation(schooling),
         type_class,
         acting,
         created_at,
@@ -73,7 +78,6 @@ exports.show = function(req, res){
     
     const teacher = {
         ...foundTeacher,
-        schooling: graduation(foundTeacher.schooling),
         age: age(foundTeacher.birth),
         acting: foundTeacher.acting.split(','),
         created_at: new Intl.DateTimeFormat('pt-BR').format(foundTeacher.created_at)
@@ -95,7 +99,7 @@ exports.edit = function(req, res){
 
     const teacher = {
         ...foundTeacher,
-        birth: date(foundTeacher.birth)
+        birth: date(foundTeacher.birth).iso
     }
 
     return res.render('teachers/edit', { teacher })
@@ -127,6 +131,7 @@ exports.update = function(req, res){
         ...foundTeacher,                    //usando o operador Spread Operator onde ele armazena os campos do foundInstructor que não serão alterados
         ...req.body,                        //usando o operador Spread Operator onde ele armazena os dados vindo do req.body
         id: Number(id),
+        schooling: graduation(req.body.schooling),
         birth: Date.parse(req.body.birth)   //chamanda a função e passando como paramentro o nasc. do instrutor pego pelo req.body
     }
 

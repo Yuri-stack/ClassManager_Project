@@ -32,11 +32,25 @@
 
                     <select name="schooling" required>
 
-                        <option value="">Escolha o Grau de Escolaridade</option>
-                        <option value="medio">Ensino Médio Completo</option>
-                        <option value="superior">Ensino Superior Completo</option>
-                        <option value="mestre">Mestrado</option>
-                        <option value="doutor">Doutorado</option>
+                        <option value="" {% if teacher.schooling == "" %} selected {% endif%}>
+                            Escolha o Grau de Escolaridade
+                        </option>
+
+                        <option value="medio" {% if teacher.schooling == "Ensino Médio Completo" %} selected {% endif%}>
+                            Ensino Médio Completo
+                        </option>                       
+
+                        <option value="superior" {% if teacher.schooling == "Ensino Superior Completo" %} selected {% endif%}>
+                            Ensino Superior Completo
+                        </option>
+
+                        <option value="mestre" {% if teacher.schooling == "Mestrado" %} selected {% endif%}>
+                            Mestrado
+                        </option>
+
+                        <option value="doutor" {% if teacher.schooling == "Doutorado" %} selected {% endif%}>
+                            Doutorado
+                        </option>
 
                     </select>
 

@@ -3,9 +3,9 @@
 {% block content %}
 
     <div class="card table-container">
-        
-        <a href="/teachers/create">Novo Professor</a>
 
+        <a href="/students/create">Novo Estudante</a>
+        
         <table width=100%>
             <thead>
                 <tr>
@@ -16,30 +16,30 @@
             </thead>
 
             <tbody>
-                {% for teacher in teachers %}
+                {% for student in students %}
 
                 <tr>
                     <td>
-                        <span style = "background-image: url({{ teacher.avatar_url }})"></span>
-                        {{ teacher.name }}
+                        <span style = "background-image: url({{ student.avatar_url }})"></span>
+                        {{ student.name }}
                     </td>
                     <td>
-                        {{ teacher.acting }}
+                        {{ student.acting }}
                     </td>
                     <td>
-                    {# <span><a href="/teachers/{{ teacher.id }}">Ver</a></span>
-                    <span><a href="/teachers/{{ teacher.id }}">Ver</a></span> #}
+                    {# <span><a href="/students/{{ student.id }}">Ver</a></span>
+                    <span><a href="/students/{{ student.id }}">Ver</a></span> #}
 
                     {# <div>
-                        <a href="/teachers/{{ teacher.id }}">Ver</a>
+                        <a href="/students/{{ student.id }}">Ver</a>
                     </div>
                     <div>
-                        <a href="/teachers/{{ teacher.id }}">Ver</a>
+                        <a href="/students/{{ student.id }}">Ver</a>
                     </div> #}
 
-                    <a href="/teachers/{{ teacher.id }}">Ver</a>
+                    <a href="/students/{{ student.id }}">Ver</a>
 
-                    <a href="/teachers/{{ teacher.id }}/edit">Editar</a>
+                    <a href="/students/{{ student.id }}/edit">Editar</a>
                         
                     </td>
                 </tr>

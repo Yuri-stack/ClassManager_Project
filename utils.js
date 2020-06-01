@@ -21,6 +21,30 @@ module.exports = {
         sem precisar usar esse método.*/
     },
 
+    grade:function(value){
+        
+        const key = value.toUpperCase()
+
+        switch (key) {
+            case "5EF":
+                return '5º Ano do Ensino Fundamental'
+            case "6EF":
+                return '6º Ano do Ensino Fundamental'
+            case "7EF":
+                return '7º Ano do Ensino Fundamental'
+            case "8EF":
+                return '8º Ano do Ensino Fundamental'
+            case "9EF":
+                return '9º Ano do Ensino Fundamental'
+            case "1EM":
+                return '1º Ano do Ensino Médio'
+            case "2EM":
+                return '2º Ano do Ensino Médio'
+            case "3EM":
+                return '3º Ano do Ensino Médio'            
+        }
+    },
+
     //timestamp de exemplo : 1167609600000 ou 05/03/1999
     age: function(timestamp){                                       
                                                                     //timestamp é uma cadeia de caracteres denotando a hora ou data que certo evento ocorreu 
@@ -68,7 +92,11 @@ module.exports = {
         const month = `0${date.getUTCMonth() + 1}`.slice(-2)    //pegando o mês ( +1 pois o mês vai de 0 a 11 )
         const day = `0${date.getUTCDate()}`.slice(-2)           //pegando o dia de forma universal, usando o UTC, do timestamp
 
-        return `${year}-${month}-${day}`
+        return {
+            iso: `${year}-${month}-${day}`,
+            day, month, year,
+            birthDay: `${day}/${month}`
+        }
         
         // /*
         //     No dia e no mês nós add o 0, caso a string retorne um número com um dígito, 
