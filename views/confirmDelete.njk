@@ -1,0 +1,16 @@
+<script>
+
+    const formDelete = document.querySelector("#form-delete")
+
+    formDelete.addEventListener("submit", function(event){      //verifica se o evento Submit do botão foi iniciado
+        const confirmation = confirm("Deseja Apagar?")          //usa o método Confirm, que funciona com uma caixa de confirmação
+
+        if(!confirmation){
+            event.preventDefault()                              //se o método Confirm retornar negativo, ele nega a ação padrão do botão, que é enviar o form
+        }
+    })
+
+</script>
+
+
+
