@@ -1,6 +1,6 @@
 module.exports = {
 
-    graduation: function(value){
+    graduation(value){
 
         const key = value.toUpperCase()
 
@@ -21,7 +21,7 @@ module.exports = {
         sem precisar usar esse método.*/
     },
 
-    grade:function(value){
+    grade(value){
         
         const key = value.toUpperCase()
 
@@ -46,7 +46,7 @@ module.exports = {
     },
 
     //timestamp de exemplo : 1167609600000 ou 05/03/1999
-    age: function(timestamp){                                       
+    age(timestamp){                                       
                                                                     //timestamp é uma cadeia de caracteres denotando a hora ou data que certo evento ocorreu 
         const today = new Date()                                    //pega a data de hoje
         const birthDate = new Date(timestamp)                       //pega a data de nascimento
@@ -84,7 +84,7 @@ module.exports = {
 
     },
 
-    date: function(timestamp){
+    date(timestamp){
 
         const date = new Date(timestamp)
 
@@ -93,9 +93,10 @@ module.exports = {
         const day = `0${date.getUTCDate()}`.slice(-2)           //pegando o dia de forma universal, usando o UTC, do timestamp
 
         return {
-            iso: `${year}-${month}-${day}`,
             day, month, year,
-            birthDay: `${day}/${month}`
+            iso: `${year}-${month}-${day}`,
+            birthDay: `${day}/${month}`,
+            format: `${day}/${month}/${year}`
         }
         
         // /*

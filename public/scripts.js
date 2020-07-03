@@ -1,6 +1,5 @@
 const currentPage = window.location.pathname                    /* Pega a posição atual da página */
 const menuItems = document.querySelectorAll("header .links a")  /*Pega cada item do menu */
-console.log(currentPage)
 
 for(item of menuItems){
     if(currentPage.includes(item.getAttribute("href"))){

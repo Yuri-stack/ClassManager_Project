@@ -22,33 +22,26 @@
             <div class="item">
                 <div>Grau de Escolaridade</div>
                 <div>
-                    {# <select name="schooling" required>
-                        <option value="">Escolha o Grau de Escolaridade</option>
-                        <option value="Ensino Médio Completo">Ensino Médio Completo</option>
-                        <option value="Ensino Superior Completo">Ensino Superior Completo</option>
-                        <option value="Mestrado">Mestrado</option>
-                        <option value="Doutorado">Doutorado</option>
-                    </select> #}
 
-                    <select name="schooling" required>
+                    <select name="education_level" required>
 
-                        <option value="" {% if teacher.schooling == "" %} selected {% endif%}>
+                        <option value="" {% if teacher.education_level == "" %} selected {% endif%}>
                             Escolha o Grau de Escolaridade
                         </option>
 
-                        <option value="medio" {% if teacher.schooling == "Ensino Médio Completo" %} selected {% endif%}>
+                        <option value="medio" {% if teacher.education_level == "Ensino Médio Completo" %} selected {% endif%}>
                             Ensino Médio Completo
                         </option>                       
 
-                        <option value="superior" {% if teacher.schooling == "Ensino Superior Completo" %} selected {% endif%}>
+                        <option value="superior" {% if teacher.education_level == "Ensino Superior Completo" %} selected {% endif%}>
                             Ensino Superior Completo
                         </option>
 
-                        <option value="mestre" {% if teacher.schooling == "Mestrado" %} selected {% endif%}>
+                        <option value="mestre" {% if teacher.education_level == "Mestrado" %} selected {% endif%}>
                             Mestrado
                         </option>
 
-                        <option value="doutor" {% if teacher.schooling == "Doutorado" %} selected {% endif%}>
+                        <option value="doutor" {% if teacher.education_level == "Doutorado" %} selected {% endif%}>
                             Doutorado
                         </option>
 
@@ -60,15 +53,15 @@
             <div class="item">
                 <div>Tipo de Aula</div>
                 <div>
-                    <input type="radio" id="presencial" name="type_class" value="Presencial" checked
-                        {% if teacher.type_class == "Presencial" %}
+                    <input type="radio" id="presencial" name="class_type" value="Presencial" checked
+                        {% if teacher.class_type == "Presencial" %}
                             checked
                         {% endif %}
                     >
                     <label for="presencial">Presencial</label>
 
-                    <input type="radio" id="distancia" name="type_class" value="À distância"
-                        {% if teacher.type_class == "À distância" %}
+                    <input type="radio" id="distancia" name="class_type" value="À distância"
+                        {% if teacher.class_type == "À distância" %}
                             checked
                         {% endif %}
                     >
@@ -79,7 +72,7 @@
             <div class="item">
                 <div>Área de atuação</div>
                 <div>
-                    <input type="text" name="acting"  value="{{ teacher.acting }}" placeholder="Digite as áreas separadas por vírgula" required>
+                    <input type="text" name="subjects_taught"  value="{{ teacher.subjects_taught }}" placeholder="Digite as áreas separadas por vírgula" required>
                 </div>
             </div>
             
