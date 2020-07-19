@@ -3,15 +3,18 @@ const { date } = require('../../lib/utils')
 
 module.exports = {
 
+    //Função para selecionar todos os Professores
     all(callback){
 
-        db.query(`SELECT * FROM teachers`, (err, results) => {
+        db.query(`SELECT * FROM teachers ORDER BY name ASC`, (err, results) => {
             if(err) throw `Database Error! ${err}`
 
             callback(results.rows)
         })
+        
     },
 
+    //Função para criar um novo Professor
     create(data, callback){
 
         const query = `
@@ -45,6 +48,7 @@ module.exports = {
         
     },
 
+    //Função para retornar um Professor específico
     find(id, callback){
 
         db.query(`
@@ -55,6 +59,7 @@ module.exports = {
             })
     },
 
+    //Função para atualizar um Professor
     update(data, callback){
 
         const query = `
@@ -85,6 +90,7 @@ module.exports = {
         })
     },
 
+    //Função para apagar um Professor
     delete(id, callback){
 
         db.query(`DELETE FROM teachers WHERE id = $1`, [id], (err, results) => {
