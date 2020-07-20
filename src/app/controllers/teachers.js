@@ -54,7 +54,7 @@ module.exports = {
     edit(req, res){             //Função para CARREGAR INFORMAÇÕES PARA EDITAR
         
         Teacher.find( req.params.id, function( teacher ){
-            if(!teacher) return res.send("Instructor not found")
+            if(!teacher) return res.send("Teacher not found")
 
             teacher.birth = date(teacher.birth_date).iso
             teacher.education_level = graduation(teacher.education_level)                      
