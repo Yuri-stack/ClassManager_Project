@@ -6,7 +6,11 @@ module.exports = {
     //Função para selecionar todos os Professores
     all(callback){
 
-        db.query(`SELECT * FROM teachers ORDER BY name ASC`, (err, results) => {
+        db.query(`SELECT teachers.*, count(students) as total_students
+                    FROM teachers 
+                    LEFT JOIN students ON (teachers.id = students.teacher_id)
+                    GROUP BY teachers.id
+                    ORDER BY total_students DESC`, (err, results) => {
             if(err) throw `Database Error! ${err}`
 
             callback(results.rows)

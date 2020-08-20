@@ -13,7 +13,11 @@ module.exports = {
     },
 
     redirectCreate(req, res){   //Função para redirecionar para a pagína CREATE
-        return res.render('students/create')
+
+        Student.teachersSelectOptions(function(options){
+            return res.render('students/create', { teachersOptions : options })
+        })
+
     },
 
     post(req, res){     //Função para CREATE
@@ -60,7 +64,10 @@ module.exports = {
             //o que está na esquerda é o que vai para a tela
             //o que está na direita é o que vem do BD
 
-            return res.render("students/edit", { student })
+            Student.teachersSelectOptions(function(options){
+                return res.render('students/edit', { student, teachersOptions : options })
+            })
+
         })
 
     },

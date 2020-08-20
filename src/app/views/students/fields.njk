@@ -79,4 +79,42 @@
                     <input type="number" name="workload" value="{{ student.workload }}" required>
                 </div>
             </div>
+
+            <div class="item">
+                <div>Professor</div>
+                <div>
+
+                    <select name="teacher" required>
+                        {% for teacher in teachersOptions %}
+                            <option value="{{teacher.id}}" {% if student.teacher_id == teacher.id %} selected {% endif%}>
+                                {{ teacher.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+            </div>
+
+
+            
+            {# <div class="item">
+                <div>Professor</div>
+                <div>
+
+                    <select name="teacher" required>
+
+                        {% for teacher in teachersOptions %}
+                            
+                            <option value="{{ teacher_id }}" {% if student.teacher_id == teacher_id %} selected {% endif%}>
+                                {{ teacher.name }}
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+            </div> #}
+
+
             
