@@ -52,7 +52,7 @@ module.exports = {
         
     },
 
-    //Função para retornar um Professor específico
+    //Função para mostrar os dados de um Professor específico
     find(id, callback){
 
         db.query(`
@@ -61,6 +61,23 @@ module.exports = {
 
                 callback(results.rows[0])
             })
+    },
+
+    //Função para fitrar um Professor no Index
+    findBy(filter, callback){
+
+        db.query(`SELECT teachers.*, count(students) as total_students
+                    FROM teachers 
+                    LEFT JOIN students ON (teachers.id = students.teacher_id)
+                    WHERE teachers.name ILIKE '%${ filter }%'
+                    OR teachers.subjects_taught ILIKE '%${ filter }%'
+                    GROUP BY teachers.id
+                    ORDER BY total_students DESC`, (err, results) => {
+            if(err) throw `Database Error! ${err}`
+
+            callback(results.rows)
+        })
+
     },
 
     //Função para atualizar um Professor
