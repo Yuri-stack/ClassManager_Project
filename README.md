@@ -1,6 +1,8 @@
 <h1 align="center">
     <br>
-        Class Manager 
+        <img src="public/img/index.png" alt="Index Professores" width="480">
+    <br><br>
+        Class Manager  
 </h1>
 
 <div>
@@ -38,7 +40,8 @@
 - [X] Applying CRUD
 - [X] Relationships between tables
 - [X] Search filters
-- [ ] Pagination - Loading...
+- [X] Pagination
+- [X] Finished Project
 
 ## Getting started
 

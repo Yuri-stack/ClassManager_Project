@@ -6,21 +6,29 @@ module.exports = {
 
     index(req, res){            //Função para LISTAR
         
-        const { filter } = req.query
+        let { filter, page, limit } = req.query
 
-        if( filter ){
+        page = page || 1
+        limit = limit || 2
+        let offset = limit * (page - 1)
 
-            Teacher.findBy(filter, function( teachers ){
-                return res.render("teachers/index", { teachers, filter })
-            })
+        const params = {
+            filter, 
+            page, 
+            limit, 
+            offset, 
+            callback(teachers){
 
-        } else {
+                const pagination = {
+                    total: Math.ceil(teachers[0].total / limit), 
+                    page
+                }
 
-            Teacher.all(function( teachers ){
-                return res.render("teachers/index", { teachers })
-            })
-
+                return res.render("teachers/index", { teachers, pagination, filter })
+            }
         }
+
+        Teacher.paginate(params)
         
     },
     
